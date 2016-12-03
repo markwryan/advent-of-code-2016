@@ -9,14 +9,14 @@ import java.util.List;
 /**
  * Created by mark on 12/3/16.
  */
-public class DirectionMapper {
+public class NoTimeForATaxiCab {
 
     private Direction currentDirection;
     private List<Coordinates> visitedCoordinates;
     private int xAxis;
     private int yAxis;
 
-    public DirectionMapper() {
+    public NoTimeForATaxiCab() {
         visitedCoordinates = new ArrayList<>();
         currentDirection = Direction.NORTH;
         xAxis = 0;
@@ -105,12 +105,12 @@ public class DirectionMapper {
         String[] directions = input.get(0).split(", ");
 
         //Part 1
-        DirectionMapper pt1Mapper = new DirectionMapper();
+        NoTimeForATaxiCab pt1Mapper = new NoTimeForATaxiCab();
         int endLocation = pt1Mapper.findDistance(directions);
         System.out.println("Part One ending location is " + endLocation + " bloacks away.");
 
         //Part 2
-        DirectionMapper pt2Mapper = new DirectionMapper();
+        NoTimeForATaxiCab pt2Mapper = new NoTimeForATaxiCab();
         int firstDuplicate = pt2Mapper.findDistanceFirstDuplicateLocation(directions);
         System.out.println("Part two ending location is " + firstDuplicate + " bloacks away.");
     }

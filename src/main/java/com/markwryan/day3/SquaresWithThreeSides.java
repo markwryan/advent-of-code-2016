@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by mark on 12/3/16.
+ * Advent of Code Day 3
  */
 public class SquaresWithThreeSides {
 
@@ -49,13 +49,13 @@ public class SquaresWithThreeSides {
     private static class Triangle {
         int a, b, c;
 
-        public Triangle(int a, int b, int c) {
+        Triangle(int a, int b, int c) {
             this.a = a;
             this.b = b;
             this.c = c;
         }
 
-        public boolean isValid() {
+        boolean isValid() {
             if (a + b > c) {
                 if (b + c > a) {
                     if (a + c > b) {
@@ -66,7 +66,7 @@ public class SquaresWithThreeSides {
             return false;
         }
 
-        public static Triangle fromInput(String input) {
+        static Triangle fromInput(String input) {
             input = input.trim();
             String[] entries = input.split("\\W+");
             return new Triangle(Integer.parseInt(entries[0]),
@@ -79,7 +79,7 @@ public class SquaresWithThreeSides {
             T1  T2  T3
             T1  T2  T3
          */
-        public static List<Triangle> fromInputs(String input1, String input2, String input3) {
+        static List<Triangle> fromInputs(String input1, String input2, String input3) {
             List<Triangle> triangles = new ArrayList<>();
             String[] entries1 = input1.trim().split("\\W+");
             String[] entries2 = input2.trim().split("\\W+");

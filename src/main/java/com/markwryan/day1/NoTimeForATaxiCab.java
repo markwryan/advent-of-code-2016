@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by mark on 12/3/16.
+ * Advent of Code Day 1
  */
 public class NoTimeForATaxiCab {
 
@@ -16,7 +16,7 @@ public class NoTimeForATaxiCab {
     private int xAxis;
     private int yAxis;
 
-    public NoTimeForATaxiCab() {
+    private NoTimeForATaxiCab() {
         visitedCoordinates = new ArrayList<>();
         currentDirection = Direction.NORTH;
         xAxis = 0;
@@ -25,8 +25,8 @@ public class NoTimeForATaxiCab {
     }
     /**
      * Part one -- find number of blocks to the end location
-     * @param directions
-     * @return
+     * @param directions - Input directions
+     * @return blocks away
      */
     private int findDistance(String[] directions) {
         for (String direction : directions) {
@@ -44,7 +44,7 @@ public class NoTimeForATaxiCab {
 
     /**
      * Part two -- end location is actually the first duplicate
-     * @param directions
+     * @param directions - input directions
      * @return blocks away
      */
     private int findDistanceFirstDuplicateLocation(String [] directions) {
@@ -152,11 +152,11 @@ public class NoTimeForATaxiCab {
             this.y = y;
         }
 
-        public int getX() {
+        int getX() {
             return x;
         }
 
-        public int getY() {
+        int getY() {
             return y;
         }
 
@@ -176,10 +176,7 @@ public class NoTimeForATaxiCab {
 
             Coordinates that = (Coordinates) o;
 
-            if (x != that.x) {
-                return false;
-            }
-            return y == that.y;
+            return x == that.x && y == that.y;
         }
 
         @Override

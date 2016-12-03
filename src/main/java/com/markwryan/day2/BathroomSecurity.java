@@ -6,14 +6,14 @@ import java.nio.file.Paths;
 import java.util.List;
 
 /**
- * Created by mark on 12/3/16.
+ * Advent of Code Day 2
  */
 public class BathroomSecurity {
     private int[][] assumedKeypad;
     private char[][] actualKeypad;
     private int row, column;
 
-    public BathroomSecurity() {
+    private BathroomSecurity() {
         /*
             123
             456
@@ -73,7 +73,7 @@ public class BathroomSecurity {
         column = 1;
     }
 
-    public int getCodeEntry(char[] directions) {
+    private int getCodeEntry(char[] directions) {
         for (char direction : directions) {
             switch (direction) {
                 case 'U':
@@ -101,7 +101,7 @@ public class BathroomSecurity {
         return assumedKeypad[row][column];
     }
 
-    public char getActualCodeEntry(char[] directions) {
+    private char getActualCodeEntry(char[] directions) {
         for (char direction : directions) {
             switch (direction) {
                 case 'U':

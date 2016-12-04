@@ -16,6 +16,7 @@ public class SecurityThroughObscurity {
     public static void main(String[] args) throws IOException {
         String fileName = "src/main/resources/day4/day4.txt";
         List<String> inputs = Files.readAllLines(Paths.get(fileName));
+        List<RoomCode> validRoomCodes = new ArrayList<>();
         int sectorTotal = 0;
         for(String input : inputs) {
             String checksum = getChecksum(input);
@@ -23,10 +24,43 @@ public class SecurityThroughObscurity {
             int sectorNumber = getSectorNumber(input);
             if(isValid(roomCode, checksum)) {
                 sectorTotal += sectorNumber;
+                validRoomCodes.add(new RoomCode(roomCode, sectorNumber));
             }
         }
 
         System.out.println("Total of Valid Sectors: " + sectorTotal);
+
+
+        for(RoomCode roomCode : validRoomCodes) {
+            String decrypted = "";
+            for(String entrySet : roomCode.roomCode.split("-")) {
+                for(char entry : entrySet.toCharArray()) {
+                    int alphabeticalNumber = -1;
+                    for(int i = 0; i < alphabet.length; i++) {
+                        if(alphabet[i] == entry) {
+                            alphabeticalNumber = i;
+                            break;
+                        }
+                    }
+
+                    char current = entry;
+                    for(int i = 0; i < roomCode.sectorNumber; i++) {
+                        if(alphabeticalNumber == 25) {
+                            alphabeticalNumber = 0;
+                        }
+                        else {
+                            alphabeticalNumber++;
+                        }
+
+                        current = alphabet[alphabeticalNumber];
+                    }
+                    decrypted += current;
+                }
+                decrypted += " ";
+            }
+            System.out.println(decrypted + " " + roomCode.sectorNumber);
+
+        }
     }
 
     private static boolean isValid(String roomCode, String checksum) {
@@ -96,6 +130,16 @@ public class SecurityThroughObscurity {
 
         }
         return -1;
+    }
+
+    private static class RoomCode {
+        private String roomCode;
+        private int sectorNumber;
+
+        private RoomCode(String roomCode, int sectorNumber) {
+            this.roomCode = roomCode;
+            this.sectorNumber = sectorNumber;
+        }
     }
 
     private static class CharacterCount {

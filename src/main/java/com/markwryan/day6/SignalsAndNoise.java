@@ -40,18 +40,31 @@ public class SignalsAndNoise {
                 }
             }
         }
+        //Part 1
         for(Position position : positions) {
             int maxCount = -1;
-            char winningchar = ' ';
+            char winningCharacter = ' ';
             for(Character key : position.entries.keySet()) {
                 if(position.entries.get(key) > maxCount) {
-                    winningchar = key;
+                    winningCharacter = key;
                     maxCount = position.entries.get(key);
                 }
             }
-            System.out.print(winningchar);
+            System.out.print(winningCharacter);
         }
-
+        //Part 2
+        System.out.println("");
+        for(Position position : positions) {
+            int maxCount = Integer.MAX_VALUE;
+            char winningCharacter = ' ';
+            for(Character key : position.entries.keySet()) {
+                if(position.entries.get(key) < maxCount) {
+                    winningCharacter = key;
+                    maxCount = position.entries.get(key);
+                }
+            }
+            System.out.print(winningCharacter);
+        }
     }
 
     private static class Position {
